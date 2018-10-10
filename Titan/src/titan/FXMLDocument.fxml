@@ -8,7 +8,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<TitledPane animated="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="874.0" prefWidth="1194.0" text="untitled" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+<TitledPane animated="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="874.0" prefWidth="1194.0" text="Titan" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
   <content>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
          <children>
@@ -19,31 +19,33 @@
                     <MenuItem mnemonicParsing="false" text="Close" />
                   </items>
                 </Menu>
-                <Menu mnemonicParsing="false" text="Edit">
+                <Menu mnemonicParsing="false" text="Home">
                   <items>
                     <MenuItem mnemonicParsing="false" text="Delete" />
                   </items>
                 </Menu>
-                <Menu mnemonicParsing="false" text="Help">
+                <Menu mnemonicParsing="false" text="Calendario">
                   <items>
                     <MenuItem mnemonicParsing="false" text="About" />
                   </items>
                 </Menu>
               </menus>
             </MenuBar>
-            <TableView layoutX="50.0" layoutY="117.0" prefHeight="657.0" prefWidth="1092.0">
+            <TableView fx:id="TablaEmpleados" layoutX="50.0" layoutY="117.0" prefHeight="657.0" prefWidth="1092.0">
               <columns>
                 <TableColumn prefWidth="75.0" text="C1" />
                 <TableColumn prefWidth="75.0" text="C2" />
               </columns>
             </TableView>
             <TextField layoutX="824.0" layoutY="85.0" prefHeight="25.0" prefWidth="184.0" promptText="Ej. Hector Luna" />
-            <Button layoutX="1019.0" layoutY="85.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="121.0" text="Buscar" />
+            <Button fx:id="botonBuscar" layoutX="1019.0" layoutY="85.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="121.0" text="Buscar" />
             <Label alignment="CENTER" layoutX="50.0" layoutY="79.0" prefHeight="27.0" prefWidth="121.0" text="EMPLEADOS" textAlignment="CENTER">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
+            <Button layoutX="992.0" layoutY="785.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" text="Nuevo" />
+            <Button layoutX="834.0" layoutY="785.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" text="Detalle" />
          </children></AnchorPane>
   </content>
 </TitledPane>
