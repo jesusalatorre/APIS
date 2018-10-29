@@ -87,12 +87,14 @@ public class DB {
                                                       " 'Poncho Jimenez');";
         
         st.execute(query);
-        
-        
-        ResultSet rset = st.executeQuery("select * from EMPLEADO");
-        while (rset.next()) {
-            String name = rset.getString(2);
-            System.out.println(name);
-        }
+
     }
+        
+      public static ResultSet getEmpleados() throws Exception{
+        Connection conn = DriverManager.getConnection("jdbc:h2:~/test", "sa", "");
+        Statement st = conn.createStatement();
+        String query = "SELECT * FROM EMPLEADO";
+        ResultSet rset = st.executeQuery(query);
+        return rset;
+      }
 }

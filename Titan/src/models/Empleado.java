@@ -64,4 +64,17 @@ public class Empleado {
         this.nombre_familiar=nombre_familiar;
     }
     
+    public Empleado(String nombre,
+                    String tel,
+                    String rfc,
+                    String nombre_familiar,
+                    String tel_familiar){
+         this.nombre=nombre;
+         this.tel=tel;
+         this.rfc=rfc;
+         this.nombre_familiar=nombre_familiar;
+         this.tel_familiar=tel_familiar;
+    }
+    
+    
 }
