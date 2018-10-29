@@ -3,14 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package titan;
+package views;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import java.sql.*;
+
+import database.DB;
 
 /**
  *
@@ -22,15 +25,14 @@ public class Titan extends Application {
     public void start(Stage stage) throws Exception {
         
         Class.forName("org.h2.Driver");
-        Connection conn = DriverManager.
-            getConnection("jdbc:h2:~/test", "sa", "");
+        Connection conn = DriverManager.getConnection("jdbc:h2:~/test", "sa", "");
         
         DB.Startup();
-        DB.ExamplePopulate();
+        //DB.ExamplePopulate();
         
-        Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
+        Parent root = FXMLLoader.load(getClass().getResource("loginScene.fxml"));
+        Scene mainScene = new Scene(root);
+        stage.setScene(mainScene);
         stage.show();
         
         conn.close();
