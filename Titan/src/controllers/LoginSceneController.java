@@ -39,9 +39,9 @@ public class LoginSceneController implements Initializable{
 			Stage mainStage = (Stage) btLogin.getScene().getWindow();
                         mainStage.close();
 			mainStage.setScene(mainScene);
-                        MainSceneController MSC = new MainSceneController();
+                        MainSceneController MSC =  new MainSceneController();
                         MSC.start(mainStage);
-
+                         
 		}
 	}
 }

@@ -19,6 +19,8 @@ import java.util.ArrayList;
 import java.util.List;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -29,24 +31,20 @@ import javafx.stage.Stage;
  * @author Jesus
  */
 public class MainSceneController extends Application implements Initializable {
-     
-    ObservableList<Empleado> employees;
-    
-    @FXML
-    private TableView<Empleado> empleados;
-    @FXML
-    private TableColumn<Empleado,String> nombre_col;
-    @FXML
-    private TableColumn<Empleado,String> telefono_col;
-    @FXML
-    private TableColumn<Empleado,String> rfc_col;
-    @FXML
-    private TableColumn<Empleado,String> nom_familiar_col;
-    @FXML
-    private TableColumn<Empleado,String> tel_familiar_col;
+   
+    ObservableList<Empleado> employees = BuildData();
+    @FXML private TableView<Empleado> empleados;
+    @FXML TableColumn<Empleado, String> nombre_col;
+    @FXML TableColumn<Empleado, String> telefono_col;
+    @FXML TableColumn<Empleado, String> rfc_col;
+    @FXML TableColumn<Empleado, String> nom_familiar_col;
+    @FXML TableColumn<Empleado, String> tel_familiar_col;
+    @FXML TableColumn<Empleado, String> lugar_residencia_col;
+   
 
     public MainSceneController() throws Exception {
-        this.employees = BuildData();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("mainScene.fxml"));
+        
     }
     
     @FXML
@@ -59,14 +57,23 @@ public class MainSceneController extends Application implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        System.out.println("Ahoy!");
-        nombre_col.setCellValueFactory(new PropertyValueFactory<>("Nombre"));
-        telefono_col.setCellValueFactory(new PropertyValueFactory<>("Telefonoy"));
-        rfc_col.setCellValueFactory(new PropertyValueFactory<>("RFC"));
-        nom_familiar_col.setCellValueFactory(new PropertyValueFactory<>("Familiar"));
-        tel_familiar_col.setCellValueFactory(new PropertyValueFactory<>("Tel. Familiar"));
+        System.out.println("Ahoy!"); 
+        
+        nombre_col.setCellValueFactory(new PropertyValueFactory<Empleado, String>("nombre"));
+        nombre_col.setMinWidth(200);
+        telefono_col.setCellValueFactory(new PropertyValueFactory<Empleado, String>("tel"));
+        telefono_col.setMinWidth(100);
+        rfc_col.setCellValueFactory(new PropertyValueFactory<Empleado, String>("rfc"));
+        rfc_col.setMinWidth(100);
+        nom_familiar_col.setCellValueFactory(new PropertyValueFactory<Empleado, String>("nombre_familiar"));
+        nom_familiar_col.setMinWidth(100);
+        tel_familiar_col.setCellValueFactory(new PropertyValueFactory<Empleado, String>("tel_familiar"));
+        tel_familiar_col.setMinWidth(100);
+        lugar_residencia_col.setCellValueFactory(new PropertyValueFactory<Empleado, String>("lugar_residencia"));
+        lugar_residencia_col.setMinWidth(300);
         
         empleados.setItems(employees);
+
         
     }
 
@@ -79,6 +86,7 @@ public class MainSceneController extends Application implements Initializable {
         String rfc;
         String fam_name;
         String fam_phone;
+        String lugar_residencia;
         
         while(rset.next()){
             name = rset.getString(2);
@@ -86,23 +94,20 @@ public class MainSceneController extends Application implements Initializable {
             rfc = rset.getString(7);
             fam_phone = rset.getString(17);
             fam_name = rset.getString(18);
+            lugar_residencia = rset.getString(14);
             
-            Empleado emp = new Empleado(name, phone, rfc, fam_phone, fam_name);
-            
-            System.out.println(emp.nombre);
-            System.out.println(emp.tel);
-            System.out.println(emp.rfc);
-            System.out.println(emp.nombre_familiar);
-            System.out.println(emp.tel_familiar);
+            Empleado emp = new Empleado(name, phone, rfc, fam_phone, fam_name, lugar_residencia);
             
             E.add(emp);
         } 
-        ObservableList<Empleado> OL = FXCollections.observableArrayList(E);
+        ObservableList<Empleado> OL = FXCollections.observableList(E);
         return OL;
     }
    
    @Override
    public void start(Stage stage) throws Exception{
+       
+        
         stage.show();
     }
    
