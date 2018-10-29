@@ -30,17 +30,18 @@ public class LoginSceneController implements Initializable{
 		
 	}
 	
-	public void goToMain(ActionEvent e) throws Exception {
+	public void goToMain(ActionEvent e) throws IOException, Exception {
 		
 		if(tfUsername.getText().equals("admin") && pfPassword.getText().equals("admin")) {
 			Parent root = FXMLLoader.load(getClass().getResource("/views/mainScene.fxml"));
-	        Scene mainScene = new Scene(root);
-	        mainScene.setRoot(root);
+                        Scene mainScene = new Scene(root);
 	        
 			Stage mainStage = (Stage) btLogin.getScene().getWindow();
+                        mainStage.close();
 			mainStage.setScene(mainScene);
+                        MainSceneController MSC =  new MainSceneController();
+                        MSC.start(mainStage);
+                         
 		}
-
 	}
-
 }

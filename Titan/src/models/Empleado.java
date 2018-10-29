@@ -64,4 +64,45 @@ public class Empleado {
         this.nombre_familiar=nombre_familiar;
     }
     
+    public Empleado(String nombre,
+                    String tel,
+                    String rfc,
+                    String nombre_familiar,
+                    String tel_familiar,
+                    String lugar_residencia){
+         this.nombre=nombre;
+         this.tel=tel;
+         this.rfc=rfc;
+         this.nombre_familiar=nombre_familiar;
+         this.tel_familiar=tel_familiar;
+         this.lugar_residencia=lugar_residencia;
+    }
+    
+    public String getNombre(){
+        return nombre;
+    }
+    
+    public String getTel(){
+        return tel;
+    }
+    
+    public String getRfc(){
+        return rfc;
+    }
+    
+    public String getNombre_familiar(){
+        return nombre_familiar;
+    }
+    
+    public String getTel_familiar(){
+        return tel_familiar;
+    }
+    
+    public String getLugar_residencia(){
+        return lugar_residencia;
+    }
+    
+    
+    
+    
 }
