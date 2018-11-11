@@ -6,6 +6,8 @@
 package controllers;
 
 import database.DB;
+
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -19,6 +21,9 @@ import java.util.List;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -38,6 +43,7 @@ public class MainSceneController extends Application implements Initializable {
     @FXML TableColumn<Empleado, String> nom_familiar_col;
     @FXML TableColumn<Empleado, String> tel_familiar_col;
     @FXML TableColumn<Empleado, String> lugar_residencia_col;
+    @FXML Button btNuevo;
    
 
     public MainSceneController() throws Exception {
@@ -71,7 +77,6 @@ public class MainSceneController extends Application implements Initializable {
         lugar_residencia_col.setMinWidth(300);
         
         empleados.setItems(employees);
-
         
     }
 
@@ -104,9 +109,19 @@ public class MainSceneController extends Application implements Initializable {
    
    @Override
    public void start(Stage stage) throws Exception{
-       
         
         stage.show();
     }
+   
+   public void btAddEmpleado(ActionEvent e) throws Exception {
+	   Parent root = FXMLLoader.load(getClass().getResource("/views/addEmployee.fxml"));
+		Scene mainScene = new Scene(root);
+       
+		Stage mainStage = (Stage) btNuevo.getScene().getWindow();           
+		mainStage.close();
+		mainStage.setScene(mainScene);
+		AddEmployeeController AEC =  new AddEmployeeController();
+		AEC.start(mainStage);
+   }
     
 }

@@ -2,8 +2,12 @@ package controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import javax.swing.JOptionPane;
+
+import database.DB;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,6 +18,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import models.Cuenta;
 
 public class LoginSceneController implements Initializable{
 
@@ -32,7 +37,9 @@ public class LoginSceneController implements Initializable{
 	
 	public void goToMain(ActionEvent e) throws IOException, Exception {
 		
-		if(tfUsername.getText().equals("admin") && pfPassword.getText().equals("admin")) {
+		ArrayList<Cuenta> cuentas = DB.getCuenta();
+		 
+		if(tfUsername.getText().equals(cuentas.get(0).getUsuario()) && pfPassword.getText().equals(cuentas.get(0).getContra())) {
 			Parent root = FXMLLoader.load(getClass().getResource("/views/mainScene.fxml"));
                         Scene mainScene = new Scene(root);
 	        
@@ -42,6 +49,9 @@ public class LoginSceneController implements Initializable{
                         MainSceneController MSC =  new MainSceneController();
                         MSC.start(mainStage);
                          
+		}
+		else {
+			 JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos");
 		}
 	}
 }
