@@ -28,7 +28,7 @@ public class Titan extends Application {
         Connection conn = DriverManager.getConnection("jdbc:h2:~/test", "sa", "");
         
         DB.Startup();
-        //DB.ExamplePopulate();
+        DB.ExamplePopulate();
         
         Parent root = FXMLLoader.load(getClass().getResource("loginScene.fxml"));
         Scene mainScene = new Scene(root);

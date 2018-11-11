@@ -9,6 +9,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+
+import models.Cuenta;
 
 /**
  *
@@ -39,14 +42,23 @@ public class DB {
                 " CURP VARCHAR(255)," +
                 " TELFAMILIAR VARCHAR(255)," +
                 " NOMBREFAMILIAR VARCHAR(255));";
+        st.execute(query);
         
+        
+        query = "CREATE TABLE IF NOT EXISTS CUENTA(" + 
+                " ID INT AUTO_INCREMENT PRIMARY KEY," +
+                " USUARIO VARCHAR(255),"+
+                " CONTRA VARCHAR(255));"; 
         st.execute(query);
     }
     
         public static void ExamplePopulate() throws Exception {
         Connection conn = DriverManager.getConnection("jdbc:h2:~/test", "sa", "");
         Statement st = conn.createStatement();
-        String query = "INSERT INTO EMPLEADO VALUES ( DEFAULT," +
+        String query = "SELECT * FROM EMPLEADO";
+        ResultSet rset = st.executeQuery(query);
+        if(!rset.next()) {
+        		query = "INSERT INTO EMPLEADO VALUES ( DEFAULT," +
                                                       " 'Carlos Vela'," +
                                                       " 'TRUE',"+
                                                       " '2010-10-19'," +
@@ -87,7 +99,17 @@ public class DB {
                                                       " 'Poncho Jimenez');";
         
         st.execute(query);
-
+        }
+        
+        query = "SELECT * FROM CUENTA";
+        rset = st.executeQuery(query);
+        if(!rset.next()) {
+        		query = "INSERT INTO CUENTA VALUES ( DEFAULT,"+
+        											"'JOscar',"+
+        											"'admin123');";
+        }
+        st.execute(query);
+        											
     }
         
       public static ResultSet getEmpleados() throws Exception{
@@ -97,4 +119,20 @@ public class DB {
         ResultSet rset = st.executeQuery(query);
         return rset;
       }
+      
+      public static ArrayList<Cuenta> getCuenta() throws Exception{
+          Connection conn = DriverManager.getConnection("jdbc:h2:~/test", "sa", "");
+          Statement st = conn.createStatement();
+          String query = "SELECT * FROM CUENTA";
+          ResultSet rset = st.executeQuery(query);
+          ArrayList<Cuenta> cuentas = new ArrayList<Cuenta>();
+          Cuenta cuenta;
+          while(rset.next()){
+        	  String usuario = rset.getString(2);
+        	  String contra = rset.getString(3);
+        	  cuenta= new Cuenta(usuario, contra);
+        	  cuentas.add(cuenta);
+          }
+          return cuentas;
+        }
 }

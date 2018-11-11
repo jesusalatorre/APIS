@@ -58,14 +58,14 @@ public class MainSceneController extends Application implements Initializable {
         System.out.println("Ahoy!"); 
         
         nombre_col.setCellValueFactory(new PropertyValueFactory<Empleado, String>("nombre"));
-        nombre_col.setMinWidth(200);
+        nombre_col.setMinWidth(250);
         telefono_col.setCellValueFactory(new PropertyValueFactory<Empleado, String>("tel"));
-        telefono_col.setMinWidth(100);
+        telefono_col.setMinWidth(150);
         rfc_col.setCellValueFactory(new PropertyValueFactory<Empleado, String>("rfc"));
-        rfc_col.setMinWidth(100);
-        nom_familiar_col.setCellValueFactory(new PropertyValueFactory<Empleado, String>("nombre_familiar"));
-        nom_familiar_col.setMinWidth(100);
-        tel_familiar_col.setCellValueFactory(new PropertyValueFactory<Empleado, String>("tel_familiar"));
+        rfc_col.setMinWidth(150);
+        nom_familiar_col.setCellValueFactory(new PropertyValueFactory<Empleado, String>("tel_familiar"));
+        nom_familiar_col.setMinWidth(150);
+        tel_familiar_col.setCellValueFactory(new PropertyValueFactory<Empleado, String>("nombre_familiar"));
         tel_familiar_col.setMinWidth(100);
         lugar_residencia_col.setCellValueFactory(new PropertyValueFactory<Empleado, String>("lugar_residencia"));
         lugar_residencia_col.setMinWidth(300);
