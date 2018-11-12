@@ -86,6 +86,21 @@ public class Empleado {
         return nombre;
     }
     
+    public Boolean getActivo() {
+    	return activo;
+    }
+    
+    public String getIngreso() {
+    	return fecha_ingreso;
+    }
+    
+    public String getBaja() {
+    	return fecha_baja;
+    }
+    
+    public int getConsulta() {
+    	return cons;
+    }
     public String getTel(){
         return tel;
     }
@@ -106,6 +121,27 @@ public class Empleado {
         return lugar_residencia;
     }
 
+    
+    public Boolean getInfonavit() {
+    	return infonavit;
+    }
+    public Boolean getFonacot() {
+    	return fonacot;
+    }
+    
+    
+    public String getLugarNacimiento() {
+    	return lugar_nacimiento;
+    }
+    
+    public String getFechaNacimiento() {
+    	return fecha_nacimiento;
+    }
+    
+    public String getCURP() {
+    	return curp;
+    }
+    
 	public boolean isActivo() {
 		return activo;
 	}

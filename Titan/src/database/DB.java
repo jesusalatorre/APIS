@@ -7,6 +7,7 @@ package database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -53,6 +54,7 @@ public class DB {
                 " CONTRA VARCHAR(255));"; 
         st.execute(query);
         
+
         
         query = "CREATE TABLE IF NOT EXISTS TIEMPOS(" + 
                 " ID INT AUTO_INCREMENT PRIMARY KEY," +
@@ -148,6 +150,71 @@ public class DB {
           return cuentas;
         }
       
+
+      public static ResultSet getEmpleadosFiltrados(String nombre) throws Exception{
+          Connection conn = DriverManager.getConnection("jdbc:h2:~/test", "sa", "");
+          PreparedStatement st = conn.prepareStatement(
+        		    "SELECT * FROM EMPLEADO WHERE NOMBRE like ?");
+          st.setString(1, nombre + "%");
+          
+          ResultSet rset = st.executeQuery();
+          return rset;
+          
+        }
+      
+      public static Empleado getEmpleado(String rfc) throws Exception{
+    	  Connection conn = DriverManager.getConnection("jdbc:h2:~/test", "sa", "");
+    	  
+          
+    	  PreparedStatement st = conn.prepareStatement(
+    	        		    " SELECT * FROM EMPLEADO WHERE RFC =  ?");
+    	  st.setString(1, rfc);
+    	  
+    	  ResultSet rset = st.executeQuery();
+    	  Empleado E=null;
+    	  while(rset.next()){
+    	  E = new Empleado(rset.getString(2), rset.getBoolean(3), rset.getString(4), rset.getString(5),
+    			  rset.getInt(6), rset.getString(7), rset.getBoolean(8), rset.getBoolean(9),
+    			  rset.getString(10), rset.getString(11), rset.getString(12), rset.getString(13),
+    			  rset.getString(14), rset.getString(15), rset.getString(16),
+    			  rset.getString(17),rset.getString(18));
+    	  }
+    	  
+    	  return E;
+    	          
+      }
+      
+      
+      
+      
+      public static Boolean updateEmpleado(Empleado empleado) throws Exception{
+    	  Connection conn = DriverManager.getConnection("jdbc:h2:~/test", "sa", "");
+    	  
+          
+    	  PreparedStatement st = conn.prepareStatement(
+    	        		    " DELETE FROM EMPLEADO WHERE CURP =  ?");
+    	  st.setString(1, empleado.getCurp());
+    	  
+    	  boolean rset = st.execute();
+    	  
+    	  return addEmpleadoToDB(empleado)&&rset;
+    	          
+      }
+      
+      public static Boolean deleteEmpleado(Empleado empleado) throws Exception{
+    	  Connection conn = DriverManager.getConnection("jdbc:h2:~/test", "sa", "");
+    	  
+    	  PreparedStatement st = conn.prepareStatement(
+    	        		    " DELETE FROM EMPLEADO WHERE CURP =  ?");
+    	  st.setString(1, empleado.getCurp());
+    	  
+    	  boolean rset = st.execute();
+    	  
+    	  return rset;
+    	          
+      }
+      
+
       public static Boolean addEmpleadoToDB(Empleado empleado) throws SQLException {
     	  Connection conn = DriverManager.getConnection("jdbc:h2:~/test", "sa", "");
           Statement st = conn.createStatement();
