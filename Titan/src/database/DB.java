@@ -8,10 +8,12 @@ package database;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
 import models.Cuenta;
+import models.Empleado;
 
 /**
  *
@@ -50,6 +52,16 @@ public class DB {
                 " USUARIO VARCHAR(255),"+
                 " CONTRA VARCHAR(255));"; 
         st.execute(query);
+        
+        
+        query = "CREATE TABLE IF NOT EXISTS TIEMPOS(" + 
+                " ID INT AUTO_INCREMENT PRIMARY KEY," +
+                " FECHA DATE,"+
+                " HORAS INT," +
+                " EXTRAS INT," +
+                " EMPLEADO INT);"; 
+        st.execute(query);
+        
     }
     
         public static void ExamplePopulate() throws Exception {
@@ -135,4 +147,45 @@ public class DB {
           }
           return cuentas;
         }
+      
+      public static Boolean addEmpleadoToDB(Empleado empleado) throws SQLException {
+    	  Connection conn = DriverManager.getConnection("jdbc:h2:~/test", "sa", "");
+          Statement st = conn.createStatement();
+          String query = "INSERT INTO EMPLEADO VALUES (DEFAULT,";
+          query = query.concat("'" + empleado.getNombre() + "',");
+          
+          if(empleado.isActivo())
+        	  query = query.concat("TRUE,");
+          else query = query.concat("FALSE,");
+          
+          query = query.concat("'" + empleado.getFecha_ingreso() + "',");
+          
+          if(empleado.getFecha_baja() != null)
+        	  query = query.concat("'" + empleado.getFecha_baja() + "',");
+          else query = query.concat(" NULL, ");
+          
+          query = query.concat(empleado.getCons() + ",");
+          query = query.concat("'" + empleado.getRfc() + "',");
+          
+          if(empleado.isInfonavit())
+        	  query = query.concat(" TRUE, ");
+          else query = query.concat("FALSE, ");
+          
+          if(empleado.isFonacot())
+        	  query = query.concat(" TRUE, ");
+          else query = query.concat("FALSE, ");
+          
+          query = query.concat("'" + empleado.getTel() + "',");
+          query = query.concat("'" + empleado.getImss() + "',");
+          query = query.concat("'" + empleado.getClinica() + "',");
+          query = query.concat("'" + empleado.getLugar_nacimiento() + "',");
+          query = query.concat("'" + empleado.getLugar_residencia() + "',");
+          query = query.concat("'" + empleado.getFecha_nacimiento() + "',");
+          query = query.concat("'" + empleado.getCurp() + "',");
+          query = query.concat("'" + empleado.getTel_familiar() + "',");
+          query = query.concat("'" + empleado.getNombre_familiar() + "');");
+          
+          Boolean rset = st.execute(query);
+    	  return rset;
+      }
 }
