@@ -133,20 +133,25 @@ public class MainSceneController extends Application implements Initializable {
    }
    
    public void btAgregarHoras(ActionEvent e) throws Exception {
-       if(empleados.getSelectionModel().getSelectedItem() != null){
-        Empleado selection = empleados.getSelectionModel().getSelectedItem();   
-        int id = selection.getId();
-        String nom = selection.getNombre(); 
+	   if(empleados.getSelectionModel().getSelectedItem() != null){
+		   Empleado selection = empleados.getSelectionModel().getSelectedItem();   
+		   int id = selection.getId();
+		   String nom = selection.getNombre();
         
-        Parent root = FXMLLoader.load(getClass().getResource("/views/addHours.fxml"));
-        AddHoursController AHC =  new AddHoursController(id, nom);
-
-                 Scene mainScene = new Scene(root);
-                 Stage mainStage = (Stage) btHoras.getScene().getWindow();           
-                 mainStage.close();
-                 mainStage.setScene(mainScene);
-                 AHC.start(mainStage);
-       }
+		   FXMLLoader loader = new FXMLLoader();
+		   loader.setLocation(getClass().getResource("/views/addHours.fxml"));
+		   Parent root = loader.load();
+		   AddHoursController AHC = loader.getController();
+		   AHC.setId(id);
+		   AHC.setName(nom);
+		   AHC.setLabel();
+        
+		   Scene mainScene = new Scene(root);
+		   Stage mainStage = (Stage) btHoras.getScene().getWindow();           
+		   mainStage.close();
+		   mainStage.setScene(mainScene);
+		   AHC.start(mainStage);   
+	   }
    }
     
 }
