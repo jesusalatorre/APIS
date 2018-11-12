@@ -24,6 +24,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.fxml.FXMLLoader;
@@ -57,6 +58,7 @@ public class MainSceneController extends Application implements Initializable {
     @FXML Button btNuevo;
     @FXML Button botonBuscar;
     @FXML TextField nombreBuscado;
+    @FXML Button salir;
    
 
     
@@ -202,6 +204,10 @@ public class MainSceneController extends Application implements Initializable {
        employees = OL;
        empleados.setItems(employees);
        empleados.refresh();
+   }
+   
+   public void salir() {
+	   Platform.exit();
    }
     
 }

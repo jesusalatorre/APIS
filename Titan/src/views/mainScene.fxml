@@ -17,8 +17,8 @@
          <children>
             <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="1194.0">
               <menus>
-                <Menu mnemonicParsing="false" text="Salir" />
-                <Menu mnemonicParsing="false" text="Calendario" />
+                <!-- <Menu mnemonicParsing="false" text="Salir"/>
+                <Menu mnemonicParsing="false" text="Calendario" /> -->
               </menus>
             </MenuBar>
             <TableView id="empleados" fx:id="empleados" layoutX="50.0" layoutY="117.0" prefHeight="657.0" prefWidth="1092.0" style="-fx-background-color: #e0ebeb#e0ebeb;">

@@ -186,6 +186,34 @@ public class DB {
       
       
       
+      
+      public static Boolean updateEmpleado(Empleado empleado) throws Exception{
+    	  Connection conn = DriverManager.getConnection("jdbc:h2:~/test", "sa", "");
+    	  
+          
+    	  PreparedStatement st = conn.prepareStatement(
+    	        		    " DELETE FROM EMPLEADO WHERE CURP =  ?");
+    	  st.setString(1, empleado.getCurp());
+    	  
+    	  boolean rset = st.execute();
+    	  
+    	  return addEmpleadoToDB(empleado)&&rset;
+    	          
+      }
+      
+      public static Boolean deleteEmpleado(Empleado empleado) throws Exception{
+    	  Connection conn = DriverManager.getConnection("jdbc:h2:~/test", "sa", "");
+    	  
+    	  PreparedStatement st = conn.prepareStatement(
+    	        		    " DELETE FROM EMPLEADO WHERE CURP =  ?");
+    	  st.setString(1, empleado.getCurp());
+    	  
+    	  boolean rset = st.execute();
+    	  
+    	  return rset;
+    	          
+      }
+      
 
       public static Boolean addEmpleadoToDB(Empleado empleado) throws SQLException {
     	  Connection conn = DriverManager.getConnection("jdbc:h2:~/test", "sa", "");
