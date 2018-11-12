@@ -51,7 +51,7 @@ public class LoginSceneController implements Initializable{
                          
 		}
 		else {
-			 JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos");
+			 JOptionPane.showMessageDialog(null, "Usuario o contrasena incorrectos");
 		}
 	}
 }

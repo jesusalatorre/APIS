@@ -50,6 +50,16 @@ public class DB {
                 " USUARIO VARCHAR(255),"+
                 " CONTRA VARCHAR(255));"; 
         st.execute(query);
+        
+        
+        query = "CREATE TABLE IF NOT EXISTS TIEMPOS(" + 
+                " ID INT AUTO_INCREMENT PRIMARY KEY," +
+                " FECHA DATE,"+
+                " HORAS INT," +
+                " EXTRAS INT," +
+                " EMPLEADO INT);"; 
+        st.execute(query);
+        
     }
     
         public static void ExamplePopulate() throws Exception {
