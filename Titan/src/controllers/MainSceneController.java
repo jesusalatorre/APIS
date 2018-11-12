@@ -37,6 +37,7 @@ public class MainSceneController extends Application implements Initializable {
    
     ObservableList<Empleado> employees = BuildData();
     @FXML private TableView<Empleado> empleados;
+    @FXML TableColumn<Empleado, Integer> id_col;
     @FXML TableColumn<Empleado, String> nombre_col;
     @FXML TableColumn<Empleado, String> telefono_col;
     @FXML TableColumn<Empleado, String> rfc_col;
@@ -44,6 +45,9 @@ public class MainSceneController extends Application implements Initializable {
     @FXML TableColumn<Empleado, String> tel_familiar_col;
     @FXML TableColumn<Empleado, String> lugar_residencia_col;
     @FXML Button btNuevo;
+    @FXML Button btHoras;
+    
+    Empleado selected;
    
 
     public MainSceneController() throws Exception {
@@ -63,6 +67,8 @@ public class MainSceneController extends Application implements Initializable {
         // TODO
         System.out.println("Ahoy!"); 
         
+        id_col.setCellValueFactory(new PropertyValueFactory<Empleado, Integer>("id"));
+        id_col.setMinWidth(20);
         nombre_col.setCellValueFactory(new PropertyValueFactory<Empleado, String>("nombre"));
         nombre_col.setMinWidth(250);
         telefono_col.setCellValueFactory(new PropertyValueFactory<Empleado, String>("tel"));
@@ -83,7 +89,8 @@ public class MainSceneController extends Application implements Initializable {
    public ObservableList<Empleado> BuildData() throws Exception{
         ResultSet rset = DB.getEmpleados();
         List<Empleado> E = new ArrayList<>();
-        
+           
+        int id;
         String name;
         String phone;
         String rfc;
@@ -92,6 +99,7 @@ public class MainSceneController extends Application implements Initializable {
         String lugar_residencia;
         
         while(rset.next()){
+            id = rset.getInt(1);
             name = rset.getString(2);
             phone = rset.getString(10);
             rfc = rset.getString(7);
@@ -99,7 +107,7 @@ public class MainSceneController extends Application implements Initializable {
             fam_name = rset.getString(18);
             lugar_residencia = rset.getString(14);
             
-            Empleado emp = new Empleado(name, phone, rfc, fam_phone, fam_name, lugar_residencia);
+            Empleado emp = new Empleado(id ,name, phone, rfc, fam_phone, fam_name, lugar_residencia);
             
             E.add(emp);
         } 
@@ -122,6 +130,23 @@ public class MainSceneController extends Application implements Initializable {
 		mainStage.setScene(mainScene);
 		AddEmployeeController AEC =  new AddEmployeeController();
 		AEC.start(mainStage);
+   }
+   
+   public void btAgregarHoras(ActionEvent e) throws Exception {
+       if(empleados.getSelectionModel().getSelectedItem() != null){
+        Empleado selection = empleados.getSelectionModel().getSelectedItem();   
+        int id = selection.getId();
+        String nom = selection.getNombre(); 
+        
+        Parent root = FXMLLoader.load(getClass().getResource("/views/addHours.fxml"));
+        AddHoursController AHC =  new AddHoursController(id, nom);
+
+                 Scene mainScene = new Scene(root);
+                 Stage mainStage = (Stage) btHoras.getScene().getWindow();           
+                 mainStage.close();
+                 mainStage.setScene(mainScene);
+                 AHC.start(mainStage);
+       }
    }
     
 }
