@@ -45,8 +45,8 @@
                   <TableColumn id="lugar_residencia_col" fx:id="lugar_residencia_col" prefWidth="75.0" text="Residencia" />
               </columns>
             </TableView>
-            <TextField layoutX="824.0" layoutY="85.0" prefHeight="25.0" prefWidth="184.0" promptText="Ej. Hector Luna" />
-            <Button fx:id="botonBuscar" layoutX="1019.0" layoutY="85.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="121.0" text="Buscar" />
+            <TextField fx:id="nombreBuscado" layoutX="824.0" layoutY="85.0" prefHeight="25.0" prefWidth="184.0" promptText="Ej. Hector Luna" />
+            <Button fx:id="botonBuscar" layoutX="1019.0" layoutY="85.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="121.0" text="Buscar" onAction="#buscarNombre"/>
             <Label alignment="CENTER" layoutX="50.0" layoutY="79.0" prefHeight="27.0" prefWidth="121.0" text="EMPLEADOS" textAlignment="CENTER">
                <font>
                   <Font size="15.0" />
