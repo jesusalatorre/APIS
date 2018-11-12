@@ -4,7 +4,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -12,48 +11,45 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<TitledPane animated="false" collapsible="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="874.0" prefWidth="1194.0" text="Titan" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainSceneController">
+<TitledPane animated="false" collapsible="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="874.0" prefWidth="1194.0" text="Titan" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainSceneController">
   <content>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: adccc7;">
          <children>
             <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="1194.0">
               <menus>
-                <Menu mnemonicParsing="false" text="File">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="Close" />
-                  </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Home">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="Delete" />
-                  </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Calendario">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="About" />
-                  </items>
-                </Menu>
+                <Menu mnemonicParsing="false" text="Salir" />
+                <Menu mnemonicParsing="false" text="Calendario" />
               </menus>
             </MenuBar>
-            <TableView id="empleados" fx:id="empleados" layoutX="50.0" layoutY="117.0" prefHeight="657.0" prefWidth="1092.0">
+            <TableView id="empleados" fx:id="empleados" layoutX="50.0" layoutY="117.0" prefHeight="657.0" prefWidth="1092.0" style="-fx-background-color: #e0ebeb#e0ebeb;">
               <columns>
-                <TableColumn id="nombre_col" fx:id="nombre_col" prefWidth="75.0" text="Nombre" />
-                <TableColumn id="tel_col" fx:id="telefono_col" prefWidth="75.0" text="Telefono" />
-                  <TableColumn id="rfc_col" fx:id="rfc_col" prefWidth="75.0" text="RFC" />
-                  <TableColumn id="nom_familiar_col" fx:id="nom_familiar_col" prefWidth="75.0" text="Familiar" />
-                  <TableColumn id="tel_familiar_col" fx:id="tel_familiar_col" prefWidth="75.0" text="Tel. Familiar" />
-                  <TableColumn id="lugar_residencia_col" fx:id="lugar_residencia_col" prefWidth="75.0" text="Residencia" />
+                <TableColumn id="nombre_col" fx:id="nombre_col" prefWidth="100.0" text="Nombre" />
+                <TableColumn id="tel_col" fx:id="telefono_col" prefWidth="100.0" text="Telefono" />
+                  <TableColumn id="rfc_col" fx:id="rfc_col" prefWidth="100.0" text="RFC" />
+                  <TableColumn id="nom_familiar_col" fx:id="nom_familiar_col" prefWidth="100.0" text="Familiar" />
+                  <TableColumn id="tel_familiar_col" fx:id="tel_familiar_col" prefWidth="100.0" text="Tel. Familiar" />
+                  <TableColumn id="lugar_residencia_col" fx:id="lugar_residencia_col" prefWidth="100.0" text="Residencia" />
               </columns>
             </TableView>
             <TextField fx:id="nombreBuscado" layoutX="824.0" layoutY="85.0" prefHeight="25.0" prefWidth="184.0" promptText="Ej. Hector Luna" />
-            <Button fx:id="botonBuscar" layoutX="1019.0" layoutY="85.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="121.0" text="Buscar" onAction="#buscarNombre"/>
-            <Label alignment="CENTER" layoutX="50.0" layoutY="79.0" prefHeight="27.0" prefWidth="121.0" text="EMPLEADOS" textAlignment="CENTER">
+            <Button fx:id="botonBuscar" layoutX="1019.0" layoutY="85.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="121.0" style="-fx-background-color: #75a3a3;" text="Buscar" textFill="WHITE" onAction="#buscarNombre">
+
                <font>
-                  <Font size="15.0" />
+                  <Font name="System Bold" size="13.0" />
+               </font></Button>
+            <Label alignment="CENTER" layoutX="50.0" layoutY="79.0" prefHeight="27.0" prefWidth="200.0" text="EMPLEADOS" textAlignment="CENTER" textFill="#d34c26">
+               <font>
+                  <Font name="System Bold" size="25.0" />
                </font>
             </Label>
-            <Button fx:id="btNuevo" layoutX="992.0" layoutY="785.0" mnemonicParsing="false" onAction="#btAddEmpleado" prefHeight="25.0" prefWidth="150.0" text="Nuevo" />
-            <Button layoutX="834.0" layoutY="785.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" text="Detalle" />
+            <Button fx:id="btNuevo" layoutX="992.0" layoutY="785.0" mnemonicParsing="false" onAction="#btAddEmpleado" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: #D34C26#053220#144C52#D34C26#053220#144C52;" text="Nuevo" textFill="WHITE">
+               <font>
+                  <Font name="System Italic" size="13.0" />
+               </font></Button>
+            <Button layoutX="834.0" layoutY="785.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: #75a3a3;" text="Detalle" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="13.0" />
+               </font></Button>
          </children></AnchorPane>
   </content>
 </TitledPane>

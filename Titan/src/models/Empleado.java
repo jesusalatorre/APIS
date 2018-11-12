@@ -78,6 +78,10 @@ public class Empleado {
          this.lugar_residencia=lugar_residencia;
     }
     
+    public Empleado() {
+    	
+    }
+    
     public String getNombre(){
         return nombre;
     }
@@ -116,6 +120,7 @@ public class Empleado {
     public String getLugar_residencia(){
         return lugar_residencia;
     }
+
     
     public Boolean getInfonavit() {
     	return infonavit;
@@ -124,13 +129,6 @@ public class Empleado {
     	return fonacot;
     }
     
-    public String getImss() {
-    	return imss;
-    }
-    
-    public String getClinica() {
-    	return clinica;
-    }
     
     public String getLugarNacimiento() {
     	return lugar_nacimiento;
@@ -143,5 +141,117 @@ public class Empleado {
     public String getCURP() {
     	return curp;
     }
+    
+	public boolean isActivo() {
+		return activo;
+	}
+
+	public void setActivo(boolean activo) {
+		this.activo = activo;
+	}
+
+	public String getFecha_ingreso() {
+		return fecha_ingreso;
+	}
+
+	public void setFecha_ingreso(String fecha_ingreso) {
+		this.fecha_ingreso = fecha_ingreso;
+	}
+
+	public String getFecha_baja() {
+		return fecha_baja;
+	}
+
+	public void setFecha_baja(String fecha_baja) {
+		this.fecha_baja = fecha_baja;
+	}
+
+	public int getCons() {
+		return cons;
+	}
+
+	public void setCons(int cons) {
+		this.cons = cons;
+	}
+
+	public boolean isInfonavit() {
+		return infonavit;
+	}
+
+	public void setInfonavit(boolean infonavit) {
+		this.infonavit = infonavit;
+	}
+
+	public boolean isFonacot() {
+		return fonacot;
+	}
+
+	public void setFonacot(boolean fonacot) {
+		this.fonacot = fonacot;
+	}
+
+	public String getImss() {
+		return imss;
+	}
+
+	public void setImss(String imss) {
+		this.imss = imss;
+	}
+
+	public String getClinica() {
+		return clinica;
+	}
+
+	public void setClinica(String clinica) {
+		this.clinica = clinica;
+	}
+
+	public String getLugar_nacimiento() {
+		return lugar_nacimiento;
+	}
+
+	public void setLugar_nacimiento(String lugar_nacimiento) {
+		this.lugar_nacimiento = lugar_nacimiento;
+	}
+
+	public String getFecha_nacimiento() {
+		return fecha_nacimiento;
+	}
+
+	public void setFecha_nacimiento(String fecha_nacimiento) {
+		this.fecha_nacimiento = fecha_nacimiento;
+	}
+
+	public String getCurp() {
+		return curp;
+	}
+
+	public void setCurp(String curp) {
+		this.curp = curp;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public void setRfc(String rfc) {
+		this.rfc = rfc;
+	}
+
+	public void setTel(String tel) {
+		this.tel = tel;
+	}
+
+	public void setLugar_residencia(String lugar_residencia) {
+		this.lugar_residencia = lugar_residencia;
+	}
+
+	public void setTel_familiar(String tel_familiar) {
+		this.tel_familiar = tel_familiar;
+	}
+
+	public void setNombre_familiar(String nombre_familiar) {
+		this.nombre_familiar = nombre_familiar;
+	}
     
 }

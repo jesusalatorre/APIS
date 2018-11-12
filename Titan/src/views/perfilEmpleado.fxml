@@ -129,7 +129,7 @@
                <children>
                   <AnchorPane prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="btnEditar" mnemonicParsing="false" style="-fx-background-color: #85adad#85adad; -fx-font-size: 24; -fx-font-weight: bold;" text="Editar" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" onAction="#edit">
+                        <Button fx:id="btnEditar" mnemonicParsing="false" style="-fx-background-color: #85adad#85adad; -fx-font-size: 24; -fx-font-weight: bold;" text="Editar" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <font>
                               <Font size="24.0" />
                            </font>

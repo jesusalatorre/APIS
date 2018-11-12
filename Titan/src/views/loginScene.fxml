@@ -10,15 +10,15 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<TitledPane animated="false" collapsible="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="874.0" prefWidth="1194.0" text="Titan Login" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginSceneController">
+<TitledPane animated="false" collapsible="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="874.0" prefWidth="1194.0" text="Titan Login" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginSceneController">
   <content>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #adccc7;">
          <children>
-            <VBox layoutX="421.0" layoutY="313.0" prefHeight="220.0" prefWidth="350.0" style="-fx-background-color: gray;">
+            <VBox layoutX="421.0" layoutY="313.0" prefHeight="220.0" prefWidth="350.0" style="-fx-background-color: #ffffff; -fx-background-radius: 10;">
                <children>
-                  <Label lineSpacing="2.0" text="Nombre de usuario:">
+                  <Label lineSpacing="2.0" text="Nombre de usuario:" textFill="#144c52">
                      <font>
-                        <Font name="Candara" size="20.0" />
+                        <Font size="20.0" />
                      </font>
                      <VBox.margin>
                         <Insets left="10.0" top="20.0" />
@@ -29,9 +29,9 @@
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </TextField>
-                  <Label lineSpacing="2.0" text="Contraseña:">
+                  <Label lineSpacing="2.0" style="-fx-font: System;" text="Contraseña:" textFill="#144c52">
                      <font>
-                        <Font name="Candara" size="20.0" />
+                        <Font name="System Font Regular" size="20.0" />
                      </font>
                      <VBox.margin>
                         <Insets left="10.0" top="20.0" />
@@ -42,13 +42,26 @@
                         <Insets left="10.0" right="10.0" top="5.0" />
                      </VBox.margin>
                   </PasswordField>
-                  <Button fx:id="btLogin" defaultButton="true" mnemonicParsing="false" onAction="#goToMain" text="Iniciar">
+                  <Button fx:id="btLogin" defaultButton="true" mnemonicParsing="false" onAction="#goToMain" style="-fx-background-color: #144c52;" text="Iniciar" textFill="WHITE">
                      <VBox.margin>
                         <Insets left="280.0" top="10.0" />
                      </VBox.margin>
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
                   </Button>
                </children>
             </VBox>
+            <Label layoutX="420.0" layoutY="215.0" prefHeight="50.0" prefWidth="352.0" text="TITAN SERVICES" textFill="#d34c26">
+               <font>
+                  <Font name="System Bold" size="40.0" />
+               </font>
+            </Label>
+            <Label layoutX="480.0" layoutY="272.0" text="Sistema de Nómina" textFill="#053220">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
   </content>
