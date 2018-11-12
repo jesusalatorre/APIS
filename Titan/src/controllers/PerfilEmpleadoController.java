@@ -46,6 +46,8 @@ public class PerfilEmpleadoController extends Application implements Initializab
 	@FXML   private Button btnEditar;
 	@FXML   private Button btnRegresar;
 	@FXML 	private Label lbNombre;
+	@FXML private Button btnAgregarHoras;
+	@FXML private Button btnVerHoras;
 	
 	@Override
 	public void initialize (URL url, ResourceBundle rb) {
@@ -243,6 +245,80 @@ public class PerfilEmpleadoController extends Application implements Initializab
         mainStage.setScene(mainScene);
         MainSceneController MSC =  new MainSceneController();
         MSC.start(mainStage);
+	}
+	
+	public void agregarHoras() {
+		FXMLLoader loader = new FXMLLoader();
+		   loader.setLocation(getClass().getResource("/views/addHours.fxml"));
+		   Parent tableViewParent = null;
+		   try {
+			   tableViewParent = loader.load();
+		   } catch (IOException e) {
+			// TODO Auto-generated catch block
+			   e.printStackTrace();
+		   }
+		   
+		   if (tableViewParent!=null) {
+  		   Scene tableViewScene = new Scene(tableViewParent);
+  		   
+  		   AddHoursController controller= loader.getController();
+  		   controller.setCurp(perfilEmpleado);
+  		   
+  		   Stage window = (Stage) btnAgregarHoras.getScene().getWindow();
+  		   
+  		   window.setScene(tableViewScene);
+  		   window.show();
+		   }
+	}
+	
+	public void verHoras() {
+			/*FXMLLoader loader = new FXMLLoader();
+		   loader.setLocation(getClass().getResource("/views/displayTimes.fxml"));
+		   Parent tableViewParent = null;
+		   try {
+			   tableViewParent = loader.load();
+		   } catch (IOException e) {
+			// TODO Auto-generated catch block
+			   e.printStackTrace();
+		   }
+		   
+		   if (tableViewParent!=null) {
+  		   Scene tableViewScene = new Scene(tableViewParent);
+  		   
+  		   DisplayTimesController controller= loader.getController();
+  		   controller.setData(perfilEmpleado);
+  		   
+  		   Stage window = (Stage) btnVerHoras.getScene().getWindow();
+  		   
+  		   window.setScene(tableViewScene);
+  		   window.show();
+		   }*/
+		
+		FXMLLoader loader = new FXMLLoader();
+		   loader.setLocation(getClass().getResource("/views/displayTimes.fxml"));
+		   Parent tableViewParent = null;
+		   try {
+			   tableViewParent = loader.load();
+		   } catch (IOException e) {
+			// TODO Auto-generated catch block
+			   e.printStackTrace();
+		   }
+		   
+		   if (tableViewParent!=null) {
+  		   Scene tableViewScene = new Scene(tableViewParent);
+  		   
+  		 DisplayTimesController controller= loader.getController();
+  		   controller.setData(perfilEmpleado);
+  		   
+  		   Stage window=(Stage)btnVerHoras.getScene().getWindow();
+  		   
+  		   window.setScene(tableViewScene);
+  		   window.show();
+		   }
+		   else {
+			  System.out.println("Controller null!"); 
+		   }
+		
 	}
 	
 	public static final LocalDate LOCAL_DATE (String dateString){

@@ -154,6 +154,27 @@
                         </Button>
                      </children>
                   </AnchorPane>
+                  
+                  <AnchorPane prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="btnAgregarHoras" mnemonicParsing="false" style="-fx-background-color: #75a3a3#75a3a3; -fx-font-size: 24; -fx-font-weight: bold; -fx-background-radius: 10;" text="Agregar Horas" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" onAction="#agregarHoras">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+                  
+                  <AnchorPane prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="btnVerHoras" mnemonicParsing="false" style="-fx-background-color: #75a3a3#75a3a3; -fx-font-size: 24; -fx-font-weight: bold; -fx-background-radius: 10;" text="Ver Horas" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" onAction="#verHoras">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+                  
                   <AnchorPane prefHeight="100.0" prefWidth="200.0">
                      <children>
                         <Button fx:id="btnRegresar" mnemonicParsing="false" style="-fx-background-color: #75a3a3#75a3a3; -fx-font-size: 24; -fx-font-weight: bold; -fx-background-radius: 10;" text="Regresar" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" onAction="#back">

@@ -15,6 +15,7 @@ import java.util.ArrayList;
 
 import models.Cuenta;
 import models.Empleado;
+import models.Hora;
 
 /**
  *
@@ -58,10 +59,11 @@ public class DB {
         
         query = "CREATE TABLE IF NOT EXISTS TIEMPOS(" + 
                 " ID INT AUTO_INCREMENT PRIMARY KEY," +
-                " FECHA DATE,"+
+                " CURP VARCHAR(255),"+
                 " HORAS INT," +
                 " EXTRAS INT," +
-                " EMPLEADO INT);"; 
+                " FECHA DATE,"+
+                " DESCRIPCION VARCHAR(255));"; 
         st.execute(query);
         
     }
@@ -255,4 +257,27 @@ public class DB {
           Boolean rset = st.execute(query);
     	  return rset;
       }
+      
+      public static Boolean addHours(Hora hora) throws SQLException {
+    	  Connection conn = DriverManager.getConnection("jdbc:h2:~/test", "sa", "");
+    	  PreparedStatement st = conn.prepareStatement( "INSERT INTO TIEMPOS VALUES (DEFAULT,?,?,?,?,?)");
+    	  st.setString(1, hora.getCurp());
+    	  st.setInt(2, hora.getHoras());
+    	  st.setInt(3, hora.getExtras());
+    	  st.setString(4, hora.getFecha());
+    	  st.setString(5, hora.getDescripcion());
+    	  boolean rset = st.execute();
+    	  return rset;
+      }
+      
+      public static ResultSet getHoras(String curp) throws Exception{
+          Connection conn = DriverManager.getConnection("jdbc:h2:~/test", "sa", "");
+          PreparedStatement st = conn.prepareStatement(
+        		    "SELECT * FROM TIEMPOS WHERE CURP = ?");
+          st.setString(1, curp);
+          
+          ResultSet rset = st.executeQuery();
+          return rset;
+          
+        }
 }
